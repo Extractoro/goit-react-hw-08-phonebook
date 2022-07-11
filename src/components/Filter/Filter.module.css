@@ -1,0 +1,22 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input {
+  width: 250px;
+  height: 20px;
+
+  border: 1px solid #000;
+  border-radius: 4px;
+  outline: none;
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 5px;
+
+  font-size: 14px;
+  font-weight: bold;
+}
