@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Navigation = () => {
+const AuthNavigation = () => {
   return (
     <div>
-      <Link to="/" exact="true">
-        Home
+      <Link to="/register" exact="true">
+        Register
       </Link>
-      <Link to="/contacts" exact="true">
-        Contacts
+      <Link to="/login" exact="true">
+        Login
       </Link>
     </div>
   );
@@ -30,4 +30,4 @@ const Link = styled(NavLink)`
   }
 `;
 
-export default Navigation;
+export default AuthNavigation;
