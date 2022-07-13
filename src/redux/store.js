@@ -17,13 +17,13 @@ import { contactsApi } from './contactsApi';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 export const store = configureStore({
   reducer: {
     contacts: contactsSlice.reducer,
-    auth: persistReducer(authPersistConfig, authSlice),
     [contactsApi.reducerPath]: contactsApi.reducer,
+    auth: persistReducer(authPersistConfig, authSlice),
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
