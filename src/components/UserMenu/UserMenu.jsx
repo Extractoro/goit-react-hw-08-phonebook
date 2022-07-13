@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 import { FaRegUser } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/auth-selectors';
+import authOperations from 'redux/auth/auth-operations';
 
 const UserMenu = () => {
-  const name = 'Vadym';
+  const dispatch = useDispatch();
+  const name = useSelector(authSelectors.getUserName);
   return (
     <Main>
       <span>
         <FaRegUser /> Добро пожаловать, {name}!
       </span>
-      <Button>Log Out</Button>
+      <Button type="button" onClick={() => dispatch(authOperations.logOut())}>
+        Log Out
+      </Button>
     </Main>
   );
 };

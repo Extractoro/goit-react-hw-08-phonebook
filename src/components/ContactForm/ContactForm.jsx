@@ -2,13 +2,10 @@ import { useState } from 'react';
 import s from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import {
-  useAddContactMutation,
-  useFetchContactsQuery,
-} from 'redux/contactsApi';
+import { useAddContactMutation, useGetContactsQuery } from 'redux/contactsApi';
 
 const Form = () => {
-  const { data: contacts } = useFetchContactsQuery();
+  const { data: contacts } = useGetContactsQuery();
   const [createContact] = useAddContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');

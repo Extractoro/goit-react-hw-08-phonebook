@@ -1,13 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -26,6 +25,17 @@ const LoginForm = () => {
     }
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(authOperations.login({ email, password }));
+    reset();
+  };
+
+  const reset = () => {
+    setEmail('');
+    setPassword('');
+  };
+
   return (
     <form className={s['form']} onSubmit={handleSubmit}>
       <label className={s['label']}>
@@ -37,7 +47,6 @@ const LoginForm = () => {
           name="email"
           placeholder="qwerty@gmail.com"
           value={email}
-          pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
           required
         />
       </label>
@@ -49,7 +58,7 @@ const LoginForm = () => {
           onChange={handleChange}
           type="password"
           name="password"
-          placeholder="+380-38-038-03-80"
+          placeholder="Password"
           value={password}
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$"
           required

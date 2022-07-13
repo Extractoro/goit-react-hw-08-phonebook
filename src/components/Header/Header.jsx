@@ -3,14 +3,16 @@ import AuthNavigation from 'components/AuthNavigation/AuthNavigation';
 import { Outlet } from 'react-router-dom';
 import UserMenu from 'components/UserMenu/UserMenu';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const Header = () => {
-  const stat = false;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <>
       <Head>
         <Navigation />
-        {stat ? <UserMenu /> : <AuthNavigation />}
+        {isLoggedIn ? <UserMenu /> : <AuthNavigation />}
       </Head>
       <Outlet />
     </>

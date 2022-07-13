@@ -2,13 +2,13 @@ import { Loading } from 'notiflix';
 import { useSelector } from 'react-redux';
 import {
   useDeleteContactMutation,
-  useFetchContactsQuery,
+  useGetContactsQuery,
 } from 'redux/contactsApi';
 import { getFilter } from 'redux/contactsSlice';
 import s from './ContactList.module.css';
 
 const ContactList = () => {
-  const { data: contacts, isFetching } = useFetchContactsQuery();
+  const { data: contacts, isFetching } = useGetContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
   const filter = useSelector(getFilter);
 

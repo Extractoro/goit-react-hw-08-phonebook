@@ -1,13 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
 
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://62c7053974e1381c0a6f801d.mockapi.io',
+    baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
-  tagsTypes: ['contact'],
+
+  tagsTypes: ['Contact'],
   endpoints: builder => ({
-    fetchContacts: builder.query({
+    getContacts: builder.query({
       query: () => `/contacts`,
       providesTags: ['Contact'],
     }),
@@ -30,7 +41,7 @@ export const contactsApi = createApi({
 });
 
 export const {
-  useFetchContactsQuery,
+  useGetContactsQuery,
   useAddContactMutation,
   useDeleteContactMutation,
 } = contactsApi;
