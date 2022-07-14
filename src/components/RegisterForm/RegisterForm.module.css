@@ -5,7 +5,11 @@
   align-items: center;
   padding-bottom: 30px;
   width: 400px;
-  background-color: #dfe4ea;
+  background: linear-gradient(
+    135deg,
+    rgba(229, 246, 243, 1) 0%,
+    rgba(223, 226, 224, 1) 100%
+  );
   margin: 0 auto;
 }
 
@@ -39,16 +43,12 @@
   height: 30px;
   color: rgb(0, 0, 0);
   font-size: 14px;
-
-  background-color: rgb(223, 213, 17);
+  color: white;
+  background-color: rgb(87 161 163);
   border: none;
   border-radius: 8px;
   cursor: pointer;
 
   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
     0px 2px 1px rgb(0 0 0 / 20%);
-}
-
-.button:hover {
-  background-color: rgb(223, 213, 17);
 }

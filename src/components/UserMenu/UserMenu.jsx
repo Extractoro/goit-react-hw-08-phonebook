@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { FaRegUser } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/auth-selectors';
+import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import { NavLink } from 'react-router-dom';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const name = useSelector(authSelectors.getUserName);
+
   return (
     <Main>
       <span>
-        <FaRegUser /> Добро пожаловать, {name}!
+        <FaRegUser />
+        <Link to="/profile">My Profile</Link>
       </span>
       <Button type="button" onClick={() => dispatch(authOperations.logOut())}>
         Log Out
@@ -27,6 +28,15 @@ const Main = styled.div`
   width: 375px;
   padding: 10px;
   align-items: center;
+`;
+
+const Link = styled(NavLink)`
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  padding-right: 15px;
 `;
 
 const Button = styled.button`

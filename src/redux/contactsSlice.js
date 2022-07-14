@@ -12,7 +12,7 @@ export const contactsSlice = createSlice({
   },
 });
 
-export const { addContacts, deleteContacts, setFilter } = contactsSlice.actions;
+export const { setFilter } = contactsSlice.actions;
 
 // Selectors
 
