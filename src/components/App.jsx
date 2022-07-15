@@ -1,6 +1,7 @@
 import ContactsPage from 'pages/ContactsPage';
 import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/LoginPage';
+import NotFound from 'pages/NotFound';
 import ProfilePage from 'pages/ProfilePage';
 import RegisterPage from 'pages/RegisterPage';
 import { useEffect } from 'react';
@@ -40,6 +41,9 @@ export const App = () => {
               </Route>
               <Route path="/profile" element={<PrivateRoute />}>
                 <Route path="/profile" element={<ProfilePage />} />
+              </Route>
+              <Route path="/" element={<PublicRoute restricted />}>
+                <Route path="*" element={<NotFound />} />
               </Route>
             </Route>
           </Routes>
