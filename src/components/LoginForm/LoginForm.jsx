@@ -7,6 +7,8 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -53,20 +55,30 @@ const LoginForm = () => {
 
       <label className={s['label']}>
         <p>Password</p>
-        <input
-          className={s['input']}
-          onChange={handleChange}
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$"
-          required
-        />
+        <div className={s['div']}>
+          <input
+            className={s['input-pass']}
+            onChange={handleChange}
+            type={show ? 'text' : 'password'}
+            name="password"
+            placeholder="Enter password"
+            value={password}
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,24}$"
+            required
+          />
+
+          <button
+            type="button"
+            className={s['button-hide']}
+            onClick={handleClick}
+          >
+            {show ? 'Hide' : 'Show'}
+          </button>
+        </div>
       </label>
 
       <button type="submit" className={s['button']}>
-        Register
+        Login
       </button>
     </form>
   );
