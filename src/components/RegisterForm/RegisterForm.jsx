@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import authOperations from 'redux/auth/auth-operations';
 import s from './RegisterForm.module.css';
 
@@ -109,6 +110,10 @@ const RegisterForm = () => {
       <button type="submit" className={s['button']}>
         Register
       </button>
+
+      <h4 className={s['h4']}>
+        If you have an account, <NavLink to="/login">login</NavLink>!
+      </h4>
     </form>
   );
 };
